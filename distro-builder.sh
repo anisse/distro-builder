@@ -78,14 +78,22 @@ build_into() {
 	"
 }
 
+# check if $1 exists and abort otherwise
+check_cmd() {
+	if ! command -v $1 &> /dev/null; then
+		echo "Command $1 unavailable"
+		exit 2
+	fi
+}
+
 build_distros() {
 	for d in $@ ; do
 		case $d in
 			fedora)
-				# Test for dnf
+				check_cmd dnf
 				;;
 			debian|ubuntu)
-				# Test for debootstrap
+				check_cmd debootstrap
 				;;
 			*)
 				echo Unknown distro $d
@@ -108,6 +116,7 @@ build_distros() {
 
 mkdir -p $ROOT
 
-DISTROS="${@:-debian fedora}"
+check_cmd systemd-nspawn
+DISTROS="${@:-debian fedora ubuntu}"
 build_distros $DISTROS
 

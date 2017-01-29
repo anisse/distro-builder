@@ -1,5 +1,21 @@
 #!/bin/bash
 # Build EFLs on multiple distros
+# This is a relatively generic script to clone a repo and test if it builds on
+# debian, ubuntu, fedora, given a provided dependency list.
+#
+# Known limitations:
+#  - only has those 3 distros for now
+#  - requires systemd-nspawn and root. Could be done with chroot easily, but
+#    why bother ?
+#  - depends on current network conditions. Some mirrors on debian httpredir
+#    might close TCP connections unexpectedly for example. This means that if
+#    you integrate this in a CI, you might get non-deterministic failures.
+#  - it has a hardcoded ubuntu mirror. Turns out debootstrap doesn't support
+#    mirrors:// URIs
+#  - for fedora testing, requires your host to have a functioning dnf. Only
+#    available on fedora for now.
+#  - it might be better to use local git reference mirror, or to use the
+#    current worktree.
 
 
 set -eo pipefail

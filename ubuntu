@@ -8,6 +8,7 @@ git
 imagemagick
 libasound2-dev
 libblkid-dev
+libblkid-dev
 libbluetooth-dev
 libbullet-dev
 libcogl-dev
@@ -15,17 +16,16 @@ libfontconfig1-dev
 libfreetype6-dev
 libfribidi-dev
 libgif-dev
-libgstreamer1.0-dev
 libgstreamer-plugins-base1.0-dev
+libgstreamer1.0-dev
 libharfbuzz-dev
 libibus-1.0-dev
 libiconv-hook-dev
 libjpeg-dev
-libblkid-dev
+libjpeg-turbo8-dev
 libluajit-5.1-dev
 liblz4-dev
 libmount-dev
-libturbojpeg0-dev
 libpam0g-dev
 libpoppler-cpp-dev
 libpoppler-dev

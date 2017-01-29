@@ -8,14 +8,8 @@ set -x
 REPOS="git://git.enlightenment.org/core/efl.git git://git.enlightenment.org/apps/terminology.git"
 
 fedora_VERSIONS="24 25"
-fedora_DEPS="bullet-devel libpng-devel libjpeg-turbo-devel gstreamer1-devel  gstreamer1-plugins-base-devel  zlib-devel luajit-devel libtiff-devel openssl-devel libcurl-devel dbus-devel glibc-devel fontconfig-devel freetype-devel fribidi-devel pulseaudio-libs-devel libsndfile-devel libX11-devel libXau-devel libXcomposite-devel libXdamage-devel libXdmcp-devel libXext-devel libXfixes-devel libXinerama-devel libXrandr-devel libXrender-devel libXScrnSaver-devel libXtst-devel libXcursor-devel libXp-devel libXi-devel mesa-libGL-devel giflib-devel libmount-devel libblkid-devel systemd-devel  poppler-cpp-devel poppler-devel LibRaw-devel libspectre-devel librsvg2-devel autoconf automake gcc gcc-c++ gettext-devel findutils tar xz libtool make"
-
 debian_VERSIONS="stretch"
-# TODO: this is not mine, fix
-debian_DEPS="autopoint build-essential ccache check doxygen faenza-icon-theme git imagemagick libasound2-dev libblkid-dev libbluetooth-dev libbullet-dev libcogl-dev libfontconfig1-dev libfreetype6-dev libfribidi-dev libgif-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libharfbuzz-dev libibus-1.0-dev libiconv-hook-dev libjpeg-dev libblkid-dev libluajit-5.1-dev liblz4-dev libmount-dev libturbojpeg0-dev libpam0g-dev libpoppler-cpp-dev libpoppler-dev libpoppler-private-dev libproxy-dev libpulse-dev libraw-dev librsvg2-dev libscim-dev libsndfile1-dev libspectre-dev libssl-dev libsystemd-dev libtiff5-dev libtool libudisks2-dev libunibreak-dev libvlc-dev libwebp-dev libxcb-keysyms1-dev libxcursor-dev libxine2-dev libxinerama-dev libxkbfile-dev libxrandr-dev libxss-dev libxtst-dev"
-
 ubuntu_VERSIONS="xenial yakkety"
-ubuntu_DEPS="$debian_DEPS linux-tools-common"
 
 CPU=$(grep processor /proc/cpuinfo |wc -l)
 
@@ -99,14 +93,13 @@ build_distros() {
 		esac
 		# Maybe we should use associative arrays here
 		declare _VERSIONS="${d}_VERSIONS"
-		declare _BUILD_CHROOT_PARAMS="${d}_DEPS"
 		local VERSIONS="${!_VERSIONS}"
 		local BUILD_CHROOT="${d}_chroot"
-		local BUILD_CHROOT_PARAMS="${!_BUILD_CHROOT_PARAMS}"
 		local BUILD_CHROOT_DIR_PREFIX=$ROOT/${d}-
 		for v in $VERSIONS ; do
 			local dir=${BUILD_CHROOT_DIR_PREFIX}${v}
-			$BUILD_CHROOT $v $dir $BUILD_CHROOT_PARAMS
+			BUILD_CHROOT_DEPS="$(cat ${d}-${v} 2>/dev/null || cat $d)"
+			$BUILD_CHROOT $v $dir $BUILD_CHROOT_DEPS
 			build_into $dir $REPOS
 		done
 	done

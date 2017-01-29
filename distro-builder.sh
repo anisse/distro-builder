@@ -22,7 +22,7 @@
 
 
 set -eo pipefail
-set -x
+set -x # TODO remove
 
 REPOS="git://git.enlightenment.org/core/efl.git git://git.enlightenment.org/apps/terminology.git"
 
@@ -82,10 +82,10 @@ build_into() {
 
 	systemd-nspawn -D $dir /bin/bash -c "
 		set -eo pipefail
-		set -x
+		set -x # TODO: remove
 		cd
 		for r in $repos; do
-			git clone \$r
+			git clone --quiet \$r || true #TODO remove this
 			(
 				cd \$(basename \$r .git)
 				./autogen.sh --prefix=/usr

@@ -38,7 +38,8 @@ _core_aptinstall() {
 	shift 2
 	local deps=$@
 
-	systemd-nspawn -D $dir /bin/bash -c "apt-get update && apt-get install -y --no-install-recommends $deps"
+	systemd-nspawn -D $dir /bin/bash -c "apt-get update --quiet &&
+		apt-get install --assume-yes --quiet --no-install-recommends $deps"
 }
 
 debian_chroot() {

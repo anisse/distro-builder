@@ -1,6 +1,6 @@
-autopoint
 autoconf
 automake
+autopoint
 build-essential
 ccache
 check
@@ -10,6 +10,7 @@ git
 imagemagick
 libasound2-dev
 libblkid-dev
+libblkid-dev
 libbluetooth-dev
 libbullet-dev
 libcogl-dev
@@ -17,17 +18,15 @@ libfontconfig1-dev
 libfreetype6-dev
 libfribidi-dev
 libgif-dev
-libgstreamer1.0-dev
 libgstreamer-plugins-base1.0-dev
+libgstreamer1.0-dev
 libharfbuzz-dev
 libibus-1.0-dev
 libiconv-hook-dev
 libjpeg-dev
-libblkid-dev
 libluajit-5.1-dev
 liblz4-dev
 libmount-dev
-libturbojpeg0-dev
 libpam0g-dev
 libpoppler-cpp-dev
 libpoppler-dev
@@ -43,6 +42,7 @@ libssl-dev
 libsystemd-dev
 libtiff5-dev
 libtool
+libturbojpeg0-dev
 libudev-dev
 libudisks2-dev
 libunibreak-dev

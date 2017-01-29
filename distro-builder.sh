@@ -11,7 +11,7 @@ fedora_VERSIONS="24 25"
 debian_VERSIONS="stretch"
 ubuntu_VERSIONS="xenial yakkety"
 
-CPU=$(grep processor /proc/cpuinfo |wc -l)
+CPUS=$(grep processor /proc/cpuinfo |wc -l)
 
 ROOT=$PWD/distros
 
@@ -69,7 +69,7 @@ build_into() {
 			(
 				cd \$(basename \$r .git)
 				./autogen.sh --prefix=/usr
-				make -j$CPU
+				make -j$CPUS
 				make check
 				make install
 			)

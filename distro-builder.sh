@@ -3,6 +3,9 @@
 # This is a relatively generic script to clone a repo and test if it builds on
 # debian, ubuntu, fedora, given a provided dependency list.
 #
+# Usage: ./distro-builder.sh <ubuntu|fedora|debian>
+#        Arguments are optional, without any all distros are tested.
+#
 # Known limitations:
 #  - only has those 3 distros for now
 #  - requires systemd-nspawn and root. Could be done with chroot easily, but

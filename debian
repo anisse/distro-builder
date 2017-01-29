@@ -1,4 +1,6 @@
 autopoint
+autoconf
+automake
 build-essential
 ccache
 check
@@ -41,6 +43,7 @@ libssl-dev
 libsystemd-dev
 libtiff5-dev
 libtool
+libudev-dev
 libudisks2-dev
 libunibreak-dev
 libvlc-dev

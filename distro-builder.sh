@@ -8,8 +8,8 @@
 #
 # Known limitations:
 #  - only has those 3 distros for now
-#  - requires systemd-nspawn and root. Could be done with chroot easily, but
-#    why bother ?
+#  - requires systemd-nspawn and must be run as root. Could be done with chroot
+#    but a bit more cumbersome.
 #  - depends on current network conditions. Some mirrors on debian httpredir
 #    might close TCP connections unexpectedly for example. This means that if
 #    you integrate this in a CI, you might get non-deterministic failures.
@@ -19,6 +19,7 @@
 #    available on fedora for now.
 #  - it might be better to use local git reference mirror, or to use the
 #    current worktree.
+#  - Slow
 
 
 set -eo pipefail

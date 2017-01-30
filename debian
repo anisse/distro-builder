@@ -6,6 +6,7 @@ ccache
 check
 doxygen
 faenza-icon-theme
+gettext
 git
 imagemagick
 libasound2-dev

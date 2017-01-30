@@ -1,9 +1,12 @@
+autoconf
+automake
 autopoint
 build-essential
 ccache
 check
 doxygen
 faenza-icon-theme
+gettext
 git
 imagemagick
 libasound2-dev

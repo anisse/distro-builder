@@ -23,7 +23,7 @@
 
 
 set -eo pipefail
-set -x # TODO remove
+# set -x # TODO remove
 
 REPOS="git://git.enlightenment.org/core/efl.git git://git.enlightenment.org/apps/terminology.git"
 
@@ -50,7 +50,7 @@ _core_debootstrap() {
 	local dir=$3
 
 	# we could have debootstrap install everything, but it's quite slow, so we use apt instead
-	debootstrap $ver $dir $mirror ||true #TODO: remove true here
+	debootstrap $ver $dir $mirror #||true #TODO: remove true here
 }
 
 _core_aptinstall() {
@@ -83,10 +83,10 @@ build_into() {
 
 	systemd-nspawn -D $dir /bin/bash -c "
 		set -eo pipefail
-		set -x # TODO: remove
+		#set -x # TODO: remove
 		cd
 		for r in $repos; do
-			git clone --quiet \$r || true #TODO remove this
+			git clone --quiet \$r #|| true #TODO true here
 			(
 				cd \$(basename \$r .git)
 				./autogen.sh --prefix=/usr

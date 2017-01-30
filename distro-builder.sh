@@ -90,7 +90,7 @@ build_into() {
 				cd \$(basename \$r .git)
 				./autogen.sh --prefix=/usr
 				make -j$CPUS
-				make check
+				#make check
 				make install
 			)
 		done
